@@ -1,0 +1,68 @@
+# ============================================================
+# Task 1 vs Task 2 CLI comparison experiments
+# Run from the project root:
+# D:\Academy\UniCal\2° Anno\1° Semister\AGT\Project\agt-network-security - updated
+# ============================================================
+
+
+# ============================================================
+# A) MAIN COMPARISON: Regular graphs, init=zeros
+# Task 1: BRD, RM, FP
+# Task 2: Shapley(v1), Shapley(v2), Shapley(v3)
+# ============================================================
+
+python experiments/run_task12_compare_cli.py --graph regular --n 100 --k 4 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph regular --n 200 --k 4 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph regular --n 500 --k 4 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph regular --n 1000 --k 4 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+
+# ============================================================
+# B) ROBUSTNESS CHECK: Regular graphs, init=random, p=0.30
+# Use selected sizes only to check initialization sensitivity.
+# ============================================================
+
+python experiments/run_task12_compare_cli.py --graph regular --n 100 --k 4 --init random --init-p 0.30 --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph regular --n 200 --k 4 --init random --init-p 0.30 --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph regular --n 500 --k 4 --init random --init-p 0.30 --K 500 --alpha 0.70 --gamma 1.0
+
+
+# ============================================================
+# C) OPTIONAL: ER graphs, init=zeros
+# If --p is omitted, p = 4/(n-1), so expected degree is about 4.
+# ============================================================
+
+python experiments/run_task12_compare_cli.py --graph er --n 100 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph er --n 200 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph er --n 500 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+
+# ============================================================
+# D) OPTIONAL: BA graphs, init=zeros
+# BA m=2 gives average degree about 4.
+# ============================================================
+
+python experiments/run_task12_compare_cli.py --graph ba --n 100 --m 2 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph ba --n 200 --m 2 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph ba --n 500 --m 2 --init zeros --K 500 --alpha 0.70 --gamma 1.0
+
+
+# ============================================================
+# E) FASTER LARGE COMPARISON OPTION
+# Use fewer Task 1 methods if RM is slow.
+# This compares BRD and FP against Task 2 variants.
+# ============================================================
+
+python experiments/run_task12_compare_cli.py --graph regular --n 1000 --k 4 --init zeros --task1-methods brd,fp --task2-chars v1,v2,v3 --K 500 --alpha 0.70 --gamma 1.0
+
+python experiments/run_task12_compare_cli.py --graph regular --n 2000 --k 4 --init zeros --task1-methods brd,fp --task2-chars v1,v2,v3 --K 500 --alpha 0.70 --gamma 1.0
+

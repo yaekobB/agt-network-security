@@ -1,0 +1,40 @@
+# AGT Network Security Project - Default Configuration
+
+random_seed: 42
+
+graphs:
+  # Graph type can be: regular | erdos_renyi | barabasi_albert
+  type: regular
+
+  # Regular graph parameters (k-regular on n nodes)
+  regular:
+    n: 20
+    k: 4
+
+  # Erdős–Rényi G(n, p)
+  erdos_renyi:
+    n: 30
+    p: 0.12
+
+  # Barabási–Albert preferential attachment
+  barabasi_albert:
+    n: 30
+    m: 2
+
+task1:
+  # Max iterations for iterative dynamics
+  max_iters: 500
+  # Convergence: stop if no changes for this many consecutive iterations
+  patience: 25
+
+task2:
+  # Monte Carlo samples for Shapley estimation
+  shapley_samples: 2000
+
+task3:
+  # Number of vendors for matching
+  n_vendors: 10
+
+task4:
+  # Insecurity penalty weight for paths (higher => prefer more secure paths)
+  insecurity_penalty: 10.0

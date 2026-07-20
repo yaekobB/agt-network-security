@@ -1,0 +1,14 @@
+# Core scientific stack
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+
+# Graph algorithms
+networkx>=3.2
+
+# Config + utilities
+pyyaml>=6.0
+tqdm>=4.66
+
+#
+streamlit>=1.35

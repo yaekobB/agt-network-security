@@ -1,0 +1,98 @@
+# ============================================================
+# Task 1 CLI experiments
+# Run from project root:
+# D:\Academy\UniCal\2° Anno\1° Semister\AGT\Project\agt-network-security - updated
+# ============================================================
+
+
+# ============================================================
+# A) Regular graphs — run all methods together for small/medium sizes
+# Safe because n is not too large
+# ============================================================
+
+python experiments/run_task1_cli.py --graph regular --n 100 --k 4 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph regular --n 200 --k 4 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph regular --n 500 --k 4 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph regular --n 1000 --k 4 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph regular --n 5000 --k 4 --init zeros --method all
+
+
+# ============================================================
+# B) Regular graphs — large runs separately
+# Do NOT use --method all for very large graphs, because RM can be slow.
+# ============================================================
+
+# ---- n = 10000 ----
+python experiments/run_task1_cli.py --graph regular --n 10000 --k 4 --init zeros --method brd
+
+python experiments/run_task1_cli.py --graph regular --n 10000 --k 4 --init zeros --method fp --fp-iters 1000
+
+python experiments/run_task1_cli.py --graph regular --n 10000 --k 4 --init zeros --method rm --rm-iters 1000
+
+
+# ---- n = 20000 ----
+python experiments/run_task1_cli.py --graph regular --n 20000 --k 4 --init zeros --method brd
+
+python experiments/run_task1_cli.py --graph regular --n 20000 --k 4 --init zeros --method fp --fp-iters 1000
+
+# Run RM for n=20000 only if you have enough time.
+# It may take a long time.
+python experiments/run_task1_cli.py --graph regular --n 20000 --k 4 --init zeros --method rm --rm-iters 1000
+
+
+# ============================================================
+# C) Optional faster RM for large graphs
+# This checks PNE every 10 iterations instead of every iteration.
+# Use only if normal RM is too slow.
+# Note: iteration count becomes first checked PNE iteration.
+# ============================================================
+
+python experiments/run_task1_cli.py --graph regular --n 10000 --k 4 --init zeros --method rm --rm-iters 1000 --check-every 10
+
+python experiments/run_task1_cli.py --graph regular --n 20000 --k 4 --init zeros --method rm --rm-iters 1000 --check-every 10
+
+
+# ============================================================
+# D) Optional ER graph experiments
+# Default ER p is p = 4/(n-1), so expected degree is about 4.
+# ============================================================
+
+python experiments/run_task1_cli.py --graph er --n 100 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph er --n 200 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph er --n 500 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph er --n 1000 --init zeros --method all
+
+# Larger ER separately
+python experiments/run_task1_cli.py --graph er --n 5000 --init zeros --method brd
+
+python experiments/run_task1_cli.py --graph er --n 5000 --init zeros --method fp --fp-iters 1000
+
+python experiments/run_task1_cli.py --graph er --n 5000 --init zeros --method rm --rm-iters 1000
+
+
+# ============================================================
+# E) Optional BA graph experiments
+# BA m=2 gives average degree about 4.
+# ============================================================
+
+python experiments/run_task1_cli.py --graph ba --n 100 --m 2 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph ba --n 200 --m 2 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph ba --n 500 --m 2 --init zeros --method all
+
+python experiments/run_task1_cli.py --graph ba --n 1000 --m 2 --init zeros --method all
+
+# Larger BA separately
+python experiments/run_task1_cli.py --graph ba --n 5000 --m 2 --init zeros --method brd
+
+python experiments/run_task1_cli.py --graph ba --n 5000 --m 2 --init zeros --method fp --fp-iters 1000
+
+python experiments/run_task1_cli.py --graph ba --n 5000 --m 2 --init zeros --method rm --rm-iters 1000
